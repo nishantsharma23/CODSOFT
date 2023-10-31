@@ -1,0 +1,47 @@
+import tkinter as tk
+
+class ToDoList(tk.Tk):
+
+    def __init__(self):
+        super().__init__()
+
+        # Create the main window.
+        self.title("To-Do List")
+        self.geometry("300x200")
+
+        # Create the to-do list frame.
+        self.frame = tk.Frame(self)
+
+        # Create the to-do list label.
+        self.label = tk.Label(self.frame, text="To-Do List:")
+
+        # Create the to-do list entry box.
+        self.entry = tk.Entry(self.frame)
+
+        # Create the to-do list add button.
+        self.add_button = tk.Button(self.frame, text="Add", command=self.add_task)
+
+        # Create the to-do list listbox.
+        self.listbox = tk.Listbox(self.frame)
+
+        # Pack the widgets.
+        self.label.pack()
+        self.entry.pack()
+        self.add_button.pack()
+        self.listbox.pack()
+
+        # Start the application.
+        self.mainloop()
+
+    def add_task(self):
+        # Get the task from the entry box.
+        task = self.entry.get()
+
+        # Add the task to the listbox.
+        self.listbox.insert("end", task)
+
+        # Clear the entry box.
+        self.entry.delete(0, "end")
+
+if __name__ == "__main__":
+    app = ToDoList()
